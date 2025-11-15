@@ -4,3 +4,340 @@
 *:after {
   box-sizing: border-box;
 }
+
+/******* Global Styles ***************/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #000;
+  background: repeating-conic-gradient(#000 0% 25%, #fff 0% 50%) 50% / 40px 40px;
+}
+
+#wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0;
+  background-color: #fff;
+  border: 20px solid;
+  border-image: repeating-conic-gradient(#000 0% 25%, #fff 0% 50%) 20;
+}
+
+main {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: #fff;
+}
+
+h1, h2 {
+  margin: 0 0 1rem 0;
+  color: #000;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+/******* Header Styles ***************/
+#top-header {
+  background-color: #fff;
+  color: #000;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siteName a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.siteName a:hover {
+  color: #333;
+}
+
+#tools a {
+  color: #000;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+#tools a:hover {
+  text-decoration: underline;
+}
+
+/******* Navigation Styles ***************/
+.main-nav {
+  background-color: #333;
+  width: 100%;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.nav-list li {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nav-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.875rem 1rem;
+  text-align: center;
+  background-color: #333;
+  transition: background-color 0.3s;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover {
+  background-color: #555;
+}
+
+.nav-link.active {
+  background-color: #555;
+}
+
+/******* Hero Section ***************/
+.hero {
+  background-color: #fff;
+  padding: 1.5rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  color: #000;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.featured-vehicle {
+  background: linear-gradient(to bottom, #e6f7fb 0%, #d4f1f9 100%);
+  border: 3px solid #4dd0e1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.vehicle-info {
+  order: 1;
+}
+
+.vehicle-image {
+  order: 2;
+  text-align: center;
+}
+
+.vehicle-name {
+  color: #00bcd4;
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+}
+
+.vehicle-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+}
+
+.vehicle-features li {
+  color: #00bcd4;
+  padding: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.cta-button {
+  background-color: #00bcd4;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #0097a7;
+}
+
+.vehicle-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/******* Content Grid ***************/
+.content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.upgrades-section,
+.reviews-section {
+  background-color: #fff;
+}
+
+/******* Upgrades Section ***************/
+.upgrades-section h2,
+.reviews-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.upgrades-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.upgrade-item {
+  background-color: #4dd0e1;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  border: 2px solid #00bcd4;
+}
+
+.upgrade-item:hover {
+  transform: translateY(-3px);
+  background-color: #26c6da;
+}
+
+.upgrade-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 0.5rem;
+  background-color: #fff;
+  padding: 0.5rem;
+}
+
+.upgrade-label {
+  color: #fff;
+  font-weight: bold;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/******* Reviews Section ***************/
+.reviews-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reviews-list li {
+  padding: 0.65rem 0;
+  color: #000;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.reviews-list li::before {
+  content: "• ";
+  color: #000;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/******* Footer Styles ***************/
+footer {
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+/******* Media Query for Larger Screens ***************/
+@media screen and (min-width: 768px) {
+  #wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  main {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .featured-vehicle {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .vehicle-info {
+    flex: 1;
+    order: 1;
+  }
+
+  .vehicle-image {
+    flex: 1;
+    order: 2;
+  }
+
+  .vehicle-name {
+    font-size: 2rem;
+  }
+
+  .vehicle-features li {
+    font-size: 1rem;
+  }
+
+  .content-grid {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .upgrades-section,
+  .reviews-section {
+    flex: 1;
+  }
+
+  .nav-list {
+    flex-wrap: nowrap;
+  }
+}
