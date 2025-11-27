@@ -1,9 +1,43 @@
+<style>
+  .main-nav {
+    background-color: #333;
+    width: 100%;
+  }
+  .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .main-nav li {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .main-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.875rem 1rem;
+    text-align: center;
+    background-color: #333;
+    transition: background-color 0.3s;
+    font-size: 0.95rem;
+  }
+  .main-nav a:hover {
+    background-color: #555;
+  }
+  .main-nav a.active {
+    background-color: #555;
+  }
+  @media screen and (min-width: 768px) {
+    .main-nav ul {
+      flex-wrap: nowrap;
+    }
+  }
+</style>
+
 <nav class="main-nav">
-    <ul class="nav-list">
-        <li><a href="/" class="nav-link <%= (title === 'Home') ? 'active' : '' %>">Home</a></li>
-        <li><a href="/custom" class="nav-link <%= (title === 'Custom') ? 'active' : '' %>">Custom</a></li>
-        <li><a href="/sedan" class="nav-link <%= (title === 'Sedan') ? 'active' : '' %>">Sedan</a></li>
-        <li><a href="/suv" class="nav-link <%= (title === 'SUV') ? 'active' : '' %>">SUV</a></li>
-        <li><a href="/truck" class="nav-link <%= (title === 'Truck') ? 'active' : '' %>">Truck</a></li>
-    </ul>
+    <%- nav %>
 </nav>
