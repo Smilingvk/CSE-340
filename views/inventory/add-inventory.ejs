@@ -1,0 +1,186 @@
+<% if (messages.notice) { %>
+  <p class="notice"><%= messages.notice %></p>
+<% } %>
+
+<% if (errors) { %>
+  <ul class="errors">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<h1>Add New Vehicle</h1>
+
+<form id="addInventoryForm" action="/inv/add-inventory" method="post">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="classification_id">Classification:*</label>
+      <%- classificationList %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="inv_make">Make:*</label>
+      <input type="text" id="inv_make" name="inv_make" required 
+        value="<%= locals.inv_make ? inv_make : '' %>"
+        minlength="3">
+    </div>
+    
+    <div class="form-group">
+      <label for="inv_model">Model:*</label>
+      <input type="text" id="inv_model" name="inv_model" required
+        value="<%= locals.inv_model ? inv_model : '' %>"
+        minlength="3">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="inv_description">Description:*</label>
+    <textarea id="inv_description" name="inv_description" required
+      rows="4"><%= locals.inv_description ? inv_description : '' %></textarea>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="inv_image">Image Path:*</label>
+      <input type="text" id="inv_image" name="inv_image" required
+        value="<%= locals.inv_image ? inv_image : '/images/vehicles/no-image.png' %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="inv_thumbnail">Thumbnail Path:*</label>
+      <input type="text" id="inv_thumbnail" name="inv_thumbnail" required
+        value="<%= locals.inv_thumbnail ? inv_thumbnail : '/images/vehicles/no-image-tn.png' %>">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="inv_price">Price:*</label>
+      <input type="number" id="inv_price" name="inv_price" required
+        value="<%= locals.inv_price ? inv_price : '' %>"
+        step="0.01" min="0">
+    </div>
+    
+    <div class="form-group">
+      <label for="inv_year">Year:*</label>
+      <input type="number" id="inv_year" name="inv_year" required
+        value="<%= locals.inv_year ? inv_year : '' %>"
+        min="1900" max="2030">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="inv_miles">Miles:*</label>
+      <input type="number" id="inv_miles" name="inv_miles" required
+        value="<%= locals.inv_miles ? inv_miles : '' %>"
+        min="0">
+    </div>
+    
+    <div class="form-group">
+      <label for="inv_color">Color:*</label>
+      <input type="text" id="inv_color" name="inv_color" required
+        value="<%= locals.inv_color ? inv_color : '' %>">
+    </div>
+  </div>
+
+  <button type="submit" class="btn-primary">Add Vehicle</button>
+  <a href="/inv" class="btn-secondary">Cancel</a>
+</form>
+
+<style>
+  .notice {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .errors {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    list-style-position: inside;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #00bcd4;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .btn-primary {
+    background-color: #00bcd4;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0097a7;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  #classificationList {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+  }
+</style>

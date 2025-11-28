@@ -1,0 +1,80 @@
+<% if (messages.notice) { %>
+  <p class="notice"><%= messages.notice %></p>
+<% } %>
+<% if (messages.error) { %>
+  <p class="error"><%= messages.error %></p>
+<% } %>
+
+<h1>Vehicle Management</h1>
+
+<div class="management-links">
+  <a href="/inv/add-classification" class="management-link">
+    <div class="link-card">
+      <h2>Add New Classification</h2>
+      <p>Add a new vehicle classification to the database</p>
+    </div>
+  </a>
+  
+  <a href="/inv/add-inventory" class="management-link">
+    <div class="link-card">
+      <h2>Add New Vehicle</h2>
+      <p>Add a new vehicle to the inventory</p>
+    </div>
+  </a>
+</div>
+
+<style>
+  .notice {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .management-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .management-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .link-card {
+    background-color: #fff;
+    border: 2px solid #00bcd4;
+    border-radius: 8px;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+  
+  .link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .link-card h2 {
+    color: #00bcd4;
+    margin-bottom: 1rem;
+  }
+  
+  .link-card p {
+    color: #666;
+    line-height: 1.6;
+  }
+</style>
