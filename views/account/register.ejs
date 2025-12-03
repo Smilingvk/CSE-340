@@ -1,0 +1,170 @@
+<% if (messages.notice) { %>
+  <p class="notice"><%= messages.notice %></p>
+<% } %>
+
+<% if (errors) { %>
+  <ul class="errors">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<h1>Register</h1>
+
+<form id="registerForm" action="/account/register" method="post">
+  <div class="form-group">
+    <label for="account_firstname">First Name:*</label>
+    <input 
+      type="text" 
+      id="account_firstname" 
+      name="account_firstname" 
+      required
+      value="<%= locals.account_firstname ? account_firstname : '' %>"
+      placeholder="Enter your first name">
+  </div>
+
+  <div class="form-group">
+    <label for="account_lastname">Last Name:*</label>
+    <input 
+      type="text" 
+      id="account_lastname" 
+      name="account_lastname" 
+      required
+      value="<%= locals.account_lastname ? account_lastname : '' %>"
+      placeholder="Enter your last name">
+  </div>
+  
+  <div class="form-group">
+    <label for="account_email">Email:*</label>
+    <input 
+      type="email" 
+      id="account_email" 
+      name="account_email" 
+      required
+      value="<%= locals.account_email ? account_email : '' %>"
+      placeholder="Enter your email">
+  </div>
+  
+  <div class="form-group">
+    <label for="account_password">Password:*</label>
+    <input 
+      type="password" 
+      id="account_password" 
+      name="account_password" 
+      required
+      minlength="12"
+      placeholder="Enter your password">
+    <span class="password-toggle" onclick="togglePassword()">Show</span>
+    <span class="form-help">Password must be at least 12 characters with uppercase, lowercase, number and special character (@$!%*?&#)</span>
+  </div>
+  
+  <button type="submit" class="btn-primary">Register</button>
+  <p>Already have an account? <a href="/account/login">Login here</a></p>
+</form>
+
+<script>
+function togglePassword() {
+  const passwordInput = document.getElementById('account_password');
+  const toggle = document.querySelector('.password-toggle');
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggle.textContent = 'Hide';
+  } else {
+    passwordInput.type = 'password';
+    toggle.textContent = 'Show';
+  }
+}
+</script>
+
+<style>
+  .notice {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .errors {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    list-style-position: inside;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #00bcd4;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 38px;
+    cursor: pointer;
+    color: #00bcd4;
+    font-weight: bold;
+    font-size: 0.875rem;
+  }
+  
+  .form-help {
+    display: block;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+  }
+  
+  .btn-primary {
+    background-color: #00bcd4;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0097a7;
+  }
+  
+  p {
+    margin-top: 1rem;
+  }
+  
+  p a {
+    color: #00bcd4;
+    text-decoration: none;
+  }
+  
+  p a:hover {
+    text-decoration: underline;
+  }
+</style>

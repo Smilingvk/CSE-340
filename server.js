@@ -12,10 +12,12 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const accountRoute = require("./routes/accountRoute")
 const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
 const flash = require("connect-flash")
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * Middleware
@@ -42,6 +44,12 @@ app.use(function(req, res, next){
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// Cookie parser middleware
+app.use(cookieParser())
+
+// JWT token check middleware
+app.use(utilities.checkJWTToken)
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -59,6 +67,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Account routes
+app.use("/account", accountRoute)
 
 // Intentional Error Route (Task 3)
 app.get("/trigger-error", utilities.handleErrors((req, res, next) => {
